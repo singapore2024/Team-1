@@ -1,5 +1,6 @@
+'use client';
 import { Box, Flex, Text, Grid, GridItem, Card, Container, Link } from '@chakra-ui/react';
-import Schedule from '../components/Schedule';  // Import the Schedule component
+import Calendar from '../components/Calendar';
 
 export default function Dashboard() {
   return (
@@ -37,11 +38,14 @@ export default function Dashboard() {
           </GridItem>
 
           <GridItem colSpan={4} minHeight="50vh">
-            <Card p="4" shadow="md" h="100%">
+            <Card p="4" shadow="md" h="100%" overflowX="auto">
               <Link href='/schedule' fontSize="lg" fontWeight="bold" _hover={{ color: 'blue.500' }}>
                 Schedule Section
               </Link>
-              <Schedule />
+              {/* Apply overflowX here to make the calendar horizontally scrollable */}
+              <Box overflowX="auto">
+                <Calendar />
+              </Box>
             </Card>
           </GridItem>
 
