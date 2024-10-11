@@ -2,11 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Global color and typography definitions */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #ffffff; /* white background */
+  --foreground: #171717; /* dark foreground text */
+  
+  --button-1-color: #F4793A; /* orange for button 1 */
+  --button-2-color: #35C1D7; /* blue for button 2 */
 }
 
+/* Dark Mode */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -14,14 +19,18 @@
   }
 }
 
+/* Body styles */
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', sans-serif; /* Make sure Poppins is included */
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Button styles */
+button.button-1 {
+  background-color: var(--button-1-color);
+}
+
+button.button-2 {
+  background-color: var(--button-2-color);
 }
