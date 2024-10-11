@@ -34,3 +34,17 @@ button.button-1 {
 button.button-2 {
   background-color: var(--button-2-color);
 }
+
+/* ag-grid */
+/* Add this to your globals.css */
+.ag-theme-alpine {
+  --ag-foreground-color: 	rgb(0,0,0);
+  --ag-background-color: rgb(249, 245, 227);
+  --ag-header-foreground-color: rgba(0, 0, 0, 1);
+  --ag-header-background-color: rgba(53, 193, 215, 0.75);
+  --ag-odd-row-background-color: rgba(0, 0, 0, 0.03);
+  --ag-header-column-resize-handle-color: 	rgb(0,0,0);
+
+  --ag-font-size: 17px;
+  --ag-font-family: roboto, sans-serif;
+}
