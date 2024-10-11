@@ -24,7 +24,18 @@ const Inventorypage = () => {
     { ingredientId: "012", name: "Olive Oil", unitPrice: 5.5, currentQuantity: 200, reservedQuantity: 61 },
     { ingredientId: "013", name: "Vinegar", unitPrice: 1.8, currentQuantity: 80, reservedQuantity: 20 },
     { ingredientId: "014", name: "Baking Soda", unitPrice: 0.7, currentQuantity: 250, reservedQuantity: 70 },
-    { ingredientId: "015", name: "Brown Sugar", unitPrice: 1.7, currentQuantity: 140, reservedQuantity: 45 }
+    { ingredientId: "015", name: "Brown Sugar", unitPrice: 1.7, currentQuantity: 140, reservedQuantity: 45 },
+    { ingredientId: "016", name: "Flour", unitPrice: 2.5, currentQuantity: 300, reservedQuantity: 100 },
+    { ingredientId: "017", name: "Sugar", unitPrice: 1.2, currentQuantity: 500, reservedQuantity: 250 },
+    { ingredientId: "018", name: "Salt", unitPrice: 0.8, currentQuantity: 100, reservedQuantity: 20 },
+    { ingredientId: "019", name: "Pepper", unitPrice: 5.0, currentQuantity: 75, reservedQuantity: 50 },
+    { ingredientId: "020", name: "Oregano", unitPrice: 3.5, currentQuantity: 120, reservedQuantity: 80 },
+    { ingredientId: "021", name: "Cumin", unitPrice: 4.0, currentQuantity: 60, reservedQuantity: 30 },
+    { ingredientId: "022", name: "Paprika", unitPrice: 3.2, currentQuantity: 90, reservedQuantity: 60 },
+    { ingredientId: "023", name: "Honey", unitPrice: 7.5, currentQuantity: 40, reservedQuantity: 20 },
+    { ingredientId: "024", name: "Almond Milk", unitPrice: 3.0, currentQuantity: 150, reservedQuantity: 70 },
+    { ingredientId: "025", name: "Rice", unitPrice: 2.0, currentQuantity: 500, reservedQuantity: 300 },
+    { ingredientId: "026", name: "Pasta", unitPrice: 1.5, currentQuantity: 200, reservedQuantity: 100 }
   ]);
 
   // Define the columns for the grid
