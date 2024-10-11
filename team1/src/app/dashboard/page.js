@@ -7,7 +7,7 @@ export default function Dashboard() {
   return (
     <Flex>
       {/* Sidebar */}
-      <Box w="250px" h="100vh" bg="gray.100" p="4">
+      <Box w="180px" h="100vh" bg="gray.100" p="4">
         <Box mb="6">
           
           <Link href='/inventory' fontSize="lg" fontWeight="bold" _hover={{ color: 'blue.500' }}>
