@@ -1,12 +1,12 @@
 import { Box, Table, Thead, Tbody, Tr, Th, Td, Text } from '@chakra-ui/react';
 
 const employees = [
-  { name: 'John', schedule: ['Working', 'Working', 'Sick', 'Working', 'Working', 'Off', 'Off'] },
-  { name: 'Anna', schedule: ['Sick', 'Sick', 'Working', 'Working', 'Working', 'Off', 'Off'] },
-  { name: 'Mark', schedule: ['Working', 'Off', 'Working', 'Working', 'Sick', 'Working', 'Off'] }
+  { name: 'John', schedule: ['Working', 'Working', 'Sick', 'Working', 'Working'] },
+  { name: 'Anna', schedule: ['Sick', 'Sick', 'Working', 'Working', 'Working'] },
+  { name: 'Mark', schedule: ['Working', 'Off', 'Working', 'Working', 'Sick'] }
 ];
 
-const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+const daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
 export default function Schedule() {
   return (

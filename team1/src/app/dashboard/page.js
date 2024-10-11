@@ -29,24 +29,25 @@ export default function Dashboard() {
       {/* Main content */}
       <Container maxW="container.xl" p="4" h="100vh">
       <Grid templateColumns="repeat(2, 1fr)" gap={6} h="100%">
-  {/* First row - 2 sections, 50% width each */}
-  <GridItem colSpan={1} minHeight="50vh">
-    <Card p="4" shadow="md" h="100%">
-      <Link href='/inventory' fontSize="lg" fontWeight="bold" _hover={{ color: 'blue.500' }}>
-        Inventory Section
-      </Link>
-      <Text>Manage orders from this section.</Text>
-    </Card>
-  </GridItem>
+        {/* First row - 2 sections, 50% width each */}
+        <GridItem colSpan={1} minHeight="50vh">
+          <Card p="4" shadow="md" h="100%">
+            <Link href='/inventory' fontSize="lg" fontWeight="bold" _hover={{ color: 'blue.500' }}>
+              Inventory Section
+            </Link>
+            <Text>Manage orders from this section.</Text>
+          </Card>
+        </GridItem>
 
-  <GridItem colSpan={1} minHeight="50vh">
-    <Card p="4" shadow="md" h="100%">
-      <Link href='/schedule' fontSize="lg" fontWeight="bold" _hover={{ color: 'blue.500' }}>
-        Schedule Section
-      </Link>
-      
-    </Card>
-  </GridItem>
+        <GridItem colSpan={1} minHeight="50vh">
+          <Card p="4" shadow="md" h="100%">
+            <Link href='/schedule' fontSize="lg" fontWeight="bold" _hover={{ color: 'blue.500' }}>
+              Schedule Section
+            </Link>
+            <Schedule/>
+            
+          </Card>
+        </GridItem>
 
 
           {/* Second row - 1 section, 50% height */}
