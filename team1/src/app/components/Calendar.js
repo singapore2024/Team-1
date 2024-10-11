@@ -41,7 +41,7 @@ export default function WeeklyCalendar() {
       {/* Calendar Header */}
       <Flex justifyContent="space-between" alignItems="center" mb={4}>
         <Button onClick={goToPreviousWeek}>&lt; Previous Week</Button>
-        <Text fontSize="2xl" fontWeight="bold">
+        <Text fontSize="2s" fontWeight="bold">
           Week of {format(currentWeek, 'MMM d, yyyy')}
         </Text>
         <Button onClick={goToNextWeek}>Next Week &gt;</Button>
