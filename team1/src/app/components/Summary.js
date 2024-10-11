@@ -15,7 +15,7 @@ export default function Summary() {
         <h2>
           <AccordionButton>
             <Box as='span' flex='1' textAlign='left'>
-            <strong>Warning 1: There are items expiring within this week.</strong>
+            <strong style={{ fontWeight: 'bold', fontSize: '16px', color: 'red'}}>Warning 1: These items have ran out.</strong>
             </Box>
             <AccordionIcon />
           </AccordionButton>
@@ -23,9 +23,7 @@ export default function Summary() {
         <AccordionPanel pb={4}>
           Items expiring within the week:
           <br></br>
-          &nbsp;&nbsp;&nbsp;- 3 x Fish
-          <br></br>
-          &nbsp;&nbsp;&nbsp;- 5 cups of Rice
+          &nbsp;&nbsp;&nbsp;- Baking Powder
         </AccordionPanel>
       </AccordionItem>
 
@@ -33,7 +31,7 @@ export default function Summary() {
         <h2>
           <AccordionButton>
             <Box as='span' flex='1' textAlign='left'>
-              <strong>Warning 2: You are running dangerously low on these items. </strong>
+              <strong style={{ fontWeight: 'bold', fontSize: '16px', color: 'red'}}>Warning 2: You are running dangerously low on these items. </strong>
             </Box>
             <AccordionIcon />
           </AccordionButton>

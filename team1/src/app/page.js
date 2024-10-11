@@ -5,7 +5,6 @@ export default function Home() {
     <div>
       {/* <h1>Welcome to the Button Test Page</h1> */}
       <Buttons />
-     
     </div>
   );
 }

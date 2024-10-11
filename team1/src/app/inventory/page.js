@@ -7,24 +7,24 @@ import 'ag-grid-community/styles/ag-grid.css'; // Import AG Grid core CSS
 import 'ag-grid-community/styles/ag-theme-alpine.css'; // Import AG Grid Alpine theme
 import '../globals.css'; // Import global styles including your color palette
 
+import { Grid, GridItem, Box } from '@chakra-ui/react'; // Import Chakra UI components
+import Summary from '../components/Summary'; // Import Summary component
+
 const Inventorypage = () => {
-  // Define the data for the grid (15 dummy rows)
+  // Define the data for the grid
   const [rowData, setRowData] = useState([
-    { ingredientId: "001", name: "Flour", unitPrice: 2.5, currentQuantity: 100, reservedQuantity: 50 },
-    { ingredientId: "002", name: "Sugar", unitPrice: 1.5, currentQuantity: 200, reservedQuantity: 60 },
-    { ingredientId: "003", name: "Salt", unitPrice: 0.8, currentQuantity: 300, reservedQuantity: 150 },
-    { ingredientId: "004", name: "Butter", unitPrice: 3.2, currentQuantity: 75, reservedQuantity: 20 },
-    { ingredientId: "005", name: "Milk", unitPrice: 1.0, currentQuantity: 50, reservedQuantity: 30 },
-    { ingredientId: "006", name: "Eggs", unitPrice: 0.5, currentQuantity: 30, reservedQuantity: 15 },
-    { ingredientId: "007", name: "Yeast", unitPrice: 1.2, currentQuantity: 40, reservedQuantity: 10 },
-    { ingredientId: "008", name: "Baking Powder", unitPrice: 0.9, currentQuantity: 90, reservedQuantity: 45 },
-    { ingredientId: "009", name: "Cocoa Powder", unitPrice: 4.5, currentQuantity: 25, reservedQuantity: 10 },
-    { ingredientId: "010", name: "Vanilla Extract", unitPrice: 6.0, currentQuantity: 10, reservedQuantity: 5 },
-    { ingredientId: "011", name: "Corn Starch", unitPrice: 2.2, currentQuantity: 110, reservedQuantity: 70 },
-    { ingredientId: "012", name: "Olive Oil", unitPrice: 5.5, currentQuantity: 80, reservedQuantity: 30 },
-    { ingredientId: "013", name: "Vinegar", unitPrice: 1.8, currentQuantity: 60, reservedQuantity: 20 },
-    { ingredientId: "014", name: "Baking Soda", unitPrice: 0.7, currentQuantity: 150, reservedQuantity: 50 },
-    { ingredientId: "015", name: "Brown Sugar", unitPrice: 1.7, currentQuantity: 180, reservedQuantity: 75 },
+    { ingredientId: "004", name: "Butter", unitPrice: 3.2, currentQuantity: 24, reservedQuantity: 23 },
+    { ingredientId: "005", name: "Milk", unitPrice: 1.0, currentQuantity: 150, reservedQuantity: 50 },
+    { ingredientId: "006", name: "Eggs", unitPrice: 0.5, currentQuantity: 59, reservedQuantity: 58 },
+    { ingredientId: "007", name: "Yeast", unitPrice: 1.2, currentQuantity: 90, reservedQuantity: 30 },
+    { ingredientId: "008", name: "Baking Powder", unitPrice: 0.9, currentQuantity: 120, reservedQuantity: 121 }, // This should calculate -1
+    { ingredientId: "009", name: "Cocoa Powder", unitPrice: 4.5, currentQuantity: 50, reservedQuantity: 15 },
+    { ingredientId: "010", name: "Vanilla Extract", unitPrice: 6.0, currentQuantity: 30, reservedQuantity: 10 },
+    { ingredientId: "011", name: "Corn Starch", unitPrice: 2.2, currentQuantity: 110, reservedQuantity: 45 },
+    { ingredientId: "012", name: "Olive Oil", unitPrice: 5.5, currentQuantity: 200, reservedQuantity: 61 },
+    { ingredientId: "013", name: "Vinegar", unitPrice: 1.8, currentQuantity: 80, reservedQuantity: 20 },
+    { ingredientId: "014", name: "Baking Soda", unitPrice: 0.7, currentQuantity: 250, reservedQuantity: 70 },
+    { ingredientId: "015", name: "Brown Sugar", unitPrice: 1.7, currentQuantity: 140, reservedQuantity: 45 }
   ]);
 
   // Define the columns for the grid
@@ -39,20 +39,25 @@ const Inventorypage = () => {
 
   // Handle cell value changes (for Current Quantity and Reserved Quantity)
   const onCellValueChanged = (params) => {
-    if (params.colDef.field === 'currentQuantity' || params.colDef.field === 'reservedQuantity') {
-      // Update 'quantityToBuy' when either 'currentQuantity' or 'reservedQuantity' changes
-      const updatedData = rowData.map(row => {
-        if (row.ingredientId === params.data.ingredientId) {
-          return {
-            ...row,
-            [params.colDef.field]: params.newValue,
-            quantityToBuy: row.currentQuantity - row.reservedQuantity // Recalculate quantity to buy
-          };
-        }
-        return row;
-      });
-      setRowData(updatedData); // Update the rowData state with the recalculated values
+    const updatedData = rowData.map(row => {
+      if (row.ingredientId === params.data.ingredientId) {
+        return {
+          ...row,
+          [params.colDef.field]: params.newValue,
+          quantityToBuy: params.data.currentQuantity - params.data.reservedQuantity // Recalculate quantity to buy
+        };
+      }
+      return row;
+    });
+    setRowData(updatedData); // Update the rowData state with the recalculated values
+  };
+
+  // Function to set row style based on quantityToBuy being negative
+  const getRowStyle = (params) => {
+    if (params.data.quantityToBuy < 0) {
+      return { color: 'red', fontWeight: 'bold' }; // Apply red text and bold style
     }
+    return null;
   };
 
   return (
@@ -67,15 +72,34 @@ const Inventorypage = () => {
           height={40} // Adjust height as needed
         />
       </div>
-      {/* AG Grid container */}
-      <div className="ag-theme-alpine custom-grid" style={{ height: '100vh', width: '100vw' }}>
-        <AgGridReact
-          rowData={rowData} // Row data for the grid
-          columnDefs={columnDefs} // Column definitions for the grid
-          defaultColDef={{ sortable: true, filter: true }} // Enable sorting and filtering
-          onCellValueChanged={onCellValueChanged} // Handle cell changes
-        />
-      </div>
+      
+      {/* Chakra UI Grid */}
+      <Grid
+        templateRows="7fr 3fr" // 7/10 for AG Grid, 3/10 for the bottom grid
+        gap={4} // Space between the grids
+        height="100vh" // Full viewport height
+      >
+        {/* AG Grid (7/10 of the page) */}
+        <GridItem>
+          <Box className="ag-theme-alpine custom-grid" style={{ height: '100%', width: '100%' }}>
+            <AgGridReact
+              rowData={rowData} // Row data for the grid
+              columnDefs={columnDefs} // Column definitions for the grid
+              defaultColDef={{ sortable: true, filter: true }} // Enable sorting and filtering
+              onCellValueChanged={onCellValueChanged} // Handle cell changes
+              getRowStyle={getRowStyle} // Apply row style conditionally
+            />
+          </Box>
+        </GridItem>
+
+        {/* Bottom Grid (3/10 of the page) */}
+        <GridItem>
+          <Box border="1px solid #ccc" p={4} height="100%" display="flex" justifyContent="center" alignItems="center">
+            {/* Include the Summary Component here */}
+            <Summary />
+          </Box>
+        </GridItem>
+      </Grid>
     </div>
   );
 };

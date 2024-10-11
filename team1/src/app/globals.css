@@ -39,9 +39,9 @@ button.button-2 {
 /* Add this to your globals.css */
 .ag-theme-alpine {
   --ag-foreground-color: 	rgb(0,0,0);
-  --ag-background-color: rgb(249, 245, 227);
+  --ag-background-color: rgb(255, 255, 255);
   --ag-header-foreground-color: rgba(0, 0, 0, 1);
-  --ag-header-background-color: rgba(53, 193, 215, 0.75);
+  --ag-header-background-color: rgba(53, 193, 215, 0.5);
   --ag-odd-row-background-color: rgba(0, 0, 0, 0.03);
   --ag-header-column-resize-handle-color: 	rgb(0,0,0);
 
